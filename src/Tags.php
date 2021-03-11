@@ -39,7 +39,7 @@ class Tags extends Field
                 }
             })->get();
 
-            return $tags->map(function (Tag $tag) use ($class, $uriKey) {
+            return $tags->map(function ($tag) use ($class, $uriKey) {
                 $href = rtrim(Nova::path(), '/').'/resources/'.$uriKey.'/'.$tag->id;
 
                 return "<a href=\"$href\" class=\"$class\">$tag->name</a>";
@@ -108,7 +108,7 @@ class Tags extends Field
             $tags = $tags->where('type', $this->meta()['type']);
         }
 
-        return $tags->map(function (Tag $tag) {
+        return $tags->map(function ($tag) {
             return e($tag->name);
         })->values();
     }
